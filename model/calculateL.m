@@ -24,10 +24,10 @@ function [L, phiRange] = calculateL(Vin, Vout, F_sw, NominalPower)
 %   - Ensure input values are in appropriate units.
 %   - Function currently only supports scalar inputs.
 
-D_max = 0.4; % Maximum duty cycle
+Phi_max = 0.4; % Maximum phase shift
 Io_max = NominalPower / Vout; % Maximum output current
 N = 1; % turns ratio
-L = Vin .* D_max .* (1-D_max) ./ (2 .* Io_max .* F_sw .* N);
-phiRange = [0, D_max];
+L = Vin .* Phi_max .* (1-Phi_max) ./ (2 .* Io_max .* F_sw .* N);
+phiRange = [0, Phi_max];
 
 end
