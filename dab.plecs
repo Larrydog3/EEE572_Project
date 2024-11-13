@@ -56,6 +56,18 @@ Plecs {
     Type          Output
     Index         "1"
   }
+  Terminal {
+    Type          Output
+    Index         "2"
+  }
+  Terminal {
+    Type          Output
+    Index         "3"
+  }
+  Terminal {
+    Type          Output
+    Index         "4"
+  }
   Schematic {
     Location      [0, 23; 1920, 1162]
     ZoomFactor    1.30957
@@ -2066,9 +2078,9 @@ Plecs {
     }
     Component {
       Type          Output
-      Name          "Outputs"
+      Name          "out_1"
       Show          on
-      Position      [1215, 140]
+      Position      [1210, 130]
       Direction     right
       Flipped       off
       LabelPosition south
@@ -2084,16 +2096,97 @@ Plecs {
       }
     }
     Component {
-      Type          SignalMux
-      Name          "Mux2"
-      Show          off
-      Position      [1165, 140]
+      Type          Output
+      Name          "out_2"
+      Show          on
+      Position      [1210, 165]
       Direction     right
       Flipped       off
       LabelPosition south
       Parameter {
+        Variable      "Index"
+        Value         "2"
+        Show          on
+      }
+      Parameter {
         Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Output
+      Name          "out_3"
+      Show          on
+      Position      [1210, 200]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
         Value         "3"
+        Show          on
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From15"
+      Show          off
+      Position      [1170, 200]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "vin_meas"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From16"
+      Show          off
+      Position      [1165, 235]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "iin_meas"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Output
+      Name          "out_4"
+      Show          on
+      Position      [1210, 235]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "4"
+        Show          on
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
         Show          off
       }
     }
@@ -2542,13 +2635,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Mux2"
-      SrcTerminal   1
-      DstComponent  "Outputs"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Llk_voltage"
       SrcTerminal   1
       Points        [895, 190; 895, 200; 920, 200]
@@ -2558,8 +2644,8 @@ Plecs {
       }
       Branch {
         Points        [920, 130]
-        DstComponent  "Mux2"
-        DstTerminal   2
+        DstComponent  "out_1"
+        DstTerminal   1
       }
     }
     Connection {
@@ -2572,10 +2658,24 @@ Plecs {
         DstTerminal   2
       }
       Branch {
-        Points        [935, 140]
-        DstComponent  "Mux2"
-        DstTerminal   3
+        Points        [935, 155; 1175, 155; 1175, 165]
+        DstComponent  "out_2"
+        DstTerminal   1
       }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From15"
+      SrcTerminal   1
+      DstComponent  "out_3"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From16"
+      SrcTerminal   1
+      DstComponent  "out_4"
+      DstTerminal   1
     }
   }
 }
