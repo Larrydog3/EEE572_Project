@@ -1,15 +1,19 @@
 function [i_pk,i_rms,isw_prim14_pk,isw_prim23_pk,isw_prim14_rms,isw_prim23_rms,...
     isw_sec14_pk,isw_sec23_pk,isw_sec14_rms,isw_sec23_rms]...
-    = calc_i(f,Va,Vb,N,phi,L,T)
+    = calc_i(f,Va,Vb,N,phi,L)
+
+T = 1./f;
 %inputs
 for k = 1:length(phi)
     for j = 1:length(Va)
-        % work 
-        g = (N.*Vb)./(Va(j));
+        
+        phi = phi.*pi;
+        
+        g = (N.*Vb)./(Va(j))
         tstep = 1e-12; 
         omega = 2.*pi.*f;
 
-        endtime1 = T.*(phi(k)./(2.*pi)); % phi
+        endtime1 = T.*(phi(k))./(2.*pi); % phi
         endtime2 = T./2; % pi
         endtime3 = endtime2+endtime1; %pi+phi
         endtime4 = T;
@@ -54,11 +58,11 @@ for k = 1:length(phi)
         
         
         
-%         plot(t, i)
-%         title("Inductor Current")
-%         ylabel("i(A)")
-%         xlabel("t(us)")
-%         hold on
+        plot(t, i)
+        title("Inductor Current")
+        ylabel("i(A)")
+        xlabel("t(us)")
+        hold on
 %         
 %         plot(isw_prim14)
 %         title("Primary Switch Current 1/4")
