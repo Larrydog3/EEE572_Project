@@ -5,9 +5,10 @@ clc;
 %inputs
 f = 400e3;
 Va = [800:100:1200];
+%Va = 1000;
 Vb = 1e3;
 N = 1; 
-phi = pi/6;
+phi = 0.4;
 %phi = [pi/12:pi/12:pi/3];
 L = 100e-6;
 T = 1./f;

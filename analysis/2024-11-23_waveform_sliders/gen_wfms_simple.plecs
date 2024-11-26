@@ -1,0 +1,565 @@
+Plecs {
+  Name          "gen_wfms"
+  Version       "4.8"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "1/f"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "3"
+  DatatypeInheritanceConflictMsg "2"
+  ContSampleTimeConflictMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands "f=400e3\nVa=1000\nVb=1000\nN=1\nphi = 0.1\nL = 100e-"
+"6\n"
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Terminal {
+    Type          Output
+    Index         "1"
+  }
+  Terminal {
+    Type          Output
+    Index         "2"
+  }
+  Terminal {
+    Type          Output
+    Index         "3"
+  }
+  Schematic {
+    Location      [0, 26; 1920, 1163]
+    ZoomFactor    1.71498
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          Output
+      Name          "out_1"
+      Show          on
+      Position      [940, 190]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "1"
+        Show          on
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
+    Component {
+      Type          PulseGenerator
+      Name          "Pulse\nGenerator"
+      Show          on
+      Position      [215, 245]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Hi"
+        Value         "Va"
+        Show          on
+      }
+      Parameter {
+        Variable      "Lo"
+        Value         "-Va"
+        Show          on
+      }
+      Parameter {
+        Variable      "f"
+        Value         "f"
+        Show          on
+      }
+      Parameter {
+        Variable      "DutyCycle"
+        Value         "0.5"
+        Show          on
+      }
+      Parameter {
+        Variable      "Delay"
+        Value         "0"
+        Show          on
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          VoltageSource
+      Name          "va"
+      Show          on
+      Position      [300, 245]
+      Direction     down
+      Flipped       on
+      LabelPosition east
+      Parameter {
+        Variable      "DiscretizationBehavior"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "StateSpaceInlining"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "Llk1"
+      Show          off
+      Position      [365, 210]
+      Direction     left
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "L"
+        Value         "L"
+        Show          on
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          on
+      }
+    }
+    Component {
+      Type          PulseGenerator
+      Name          "Pulse\nGenerator1"
+      Show          on
+      Position      [695, 245]
+      Direction     right
+      Flipped       on
+      LabelPosition south
+      Parameter {
+        Variable      "Hi"
+        Value         "N*Vb"
+        Show          on
+      }
+      Parameter {
+        Variable      "Lo"
+        Value         "-N*Vb"
+        Show          on
+      }
+      Parameter {
+        Variable      "f"
+        Value         "f"
+        Show          on
+      }
+      Parameter {
+        Variable      "DutyCycle"
+        Value         "0.5"
+        Show          on
+      }
+      Parameter {
+        Variable      "Delay"
+        Value         "phi / (2 *f)"
+        Show          on
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          VoltageSource
+      Name          "vb'"
+      Show          on
+      Position      [495, 245]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "DiscretizationBehavior"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "StateSpaceInlining"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope2"
+      Show          on
+      Position      [940, 120]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [733, 240; 1582, 957]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAALoA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAT6AAABAvw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABPoAAABxAP///wAABPoAAAMIAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAA"
+"wAAAJYAAAAGAAAAlgAAAAcAAACWAAAABAAAAJYAAAAFAAAAlgAAAAgAAACWAAAACQAAAJYAAAT6AA"
+"AACwEAAAEAAAAAAAAAAAAAAACW/////wAAAIEAAAAAAAAACwAAAPYAAAABAAAAAAAAAJYAAAABAAA"
+"AAAAAAJYAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
+"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAtgAAAABAAAAAAAAA+gAA"
+"AAANQ=="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+"=="
+      Axes          "3"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "2"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          Ammeter
+      Name          "Am2"
+      Show          on
+      Position      [430, 210]
+      Direction     left
+      Flipped       off
+      LabelPosition south
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "Probe"
+      Show          on
+      Position      [650, 95]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "va"
+        Path          ""
+        Signals       {"Source voltage"}
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "Probe1"
+      Show          on
+      Position      [650, 130]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "vb'"
+        Path          ""
+        Signals       {"Source voltage"}
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "Mux2"
+      Show          off
+      Position      [710, 110]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Width"
+        Value         "2"
+        Show          off
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "Probe2"
+      Show          on
+      Position      [545, 140]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+    }
+    Component {
+      Type          Output
+      Name          "out_2"
+      Show          on
+      Position      [940, 225]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "2"
+        Show          on
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Output
+      Name          "out_3"
+      Show          on
+      Position      [940, 270]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Index"
+        Value         "3"
+        Show          on
+      }
+      Parameter {
+        Variable      "Width"
+        Value         "-1"
+        Show          off
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "va_meas"
+      Show          on
+      Position      [825, 225]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "va"
+        Path          ""
+        Signals       {"Source voltage"}
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "vb'_meas"
+      Show          on
+      Position      [825, 270]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "vb'"
+        Path          ""
+        Signals       {"Source voltage"}
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Pulse\nGenerator"
+      SrcTerminal   1
+      DstComponent  "va"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "vb'"
+      SrcTerminal   2
+      Points        [495, 290; 300, 290]
+      DstComponent  "va"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Pulse\nGenerator1"
+      SrcTerminal   1
+      DstComponent  "vb'"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Llk1"
+      SrcTerminal   2
+      DstComponent  "Am2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am2"
+      SrcTerminal   2
+      Points        [495, 210]
+      DstComponent  "vb'"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Probe"
+      SrcTerminal   1
+      Points        [685, 95; 685, 105]
+      DstComponent  "Mux2"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Probe1"
+      SrcTerminal   1
+      Points        [685, 130; 685, 115]
+      DstComponent  "Mux2"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux2"
+      SrcTerminal   1
+      DstComponent  "Scope2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Probe2"
+      SrcTerminal   1
+      Points        [765, 140; 765, 120]
+      DstComponent  "Scope2"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Llk1"
+      SrcTerminal   1
+      Points        [300, 210]
+      DstComponent  "va"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Am2"
+      SrcTerminal   3
+      Points        [430, 190; 845, 190]
+      Branch {
+        Points        [845, 130]
+        DstComponent  "Scope2"
+        DstTerminal   3
+      }
+      Branch {
+        DstComponent  "out_1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "va_meas"
+      SrcTerminal   1
+      DstComponent  "out_2"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "vb'_meas"
+      SrcTerminal   1
+      DstComponent  "out_3"
+      DstTerminal   1
+    }
+  }
+}
