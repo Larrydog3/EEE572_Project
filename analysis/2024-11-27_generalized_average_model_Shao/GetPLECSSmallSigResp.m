@@ -3,7 +3,7 @@ function [results] = GetPLECSSmallSigResp(dab_params)
     % Run PLECS simulation
     proxy = jsonrpc('http://localhost:1080', 'Timeout', 0.5);
     % get the path the directory containing this function declaration, not the pwd
-    path = fileparts(mfilename('fullpath'));
+    path = fileparts(mfilename('C:\Users\idwil\repos\EEE572_Project'));
     model_name = 'dab_small_signal_2';
     proxy.plecs.load([path '/' model_name '.plecs']);
     proxy.plecs.get(model_name);

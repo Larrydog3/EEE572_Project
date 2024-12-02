@@ -1,5 +1,5 @@
 Plecs {
-  Name          "dab_small_signal"
+  Name          "dab_small_signal_Dubey"
   Version       "4.7"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -24,8 +24,8 @@ Plecs {
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
   InitializationCommands "f=400e3\nVin=1000\n\nVo_0 = 1000\nVo = Vo_0\n\nC_2=1"
-"00e-6\nCo = C_2\n\nR_L=10e3\nRl = R_L\n\nPhi = 0.0 \n\nLlk = 300e-6\nL = Llk"
-"\n\nN = 1\nn = N"
+"e-6\nCo = C_2\n\nR_L=1e4\nRl = R_L\n\nPhi = 0.1\n\nLlk = 100e-6\nL = Llk\n\nN"
+" = 1\nn = N"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -65,9 +65,9 @@ Plecs {
     Index         "4"
   }
   Schematic {
-    Location      [0, 26; 1920, 1162]
-    ZoomFactor    0.583093
-    SliderPosition [0, 0]
+    Location      [819, -714; 2772, -87]
+    ZoomFactor    1.14436
+    SliderPosition [0, 116]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -2201,108 +2201,6 @@ Plecs {
       }
     }
     Component {
-      Type          TransferFunction
-      Name          "Transfer Fcn"
-      Show          on
-      Position      [290, 235]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Frame         [-50, -15; 50, 15]
-      Parameter {
-        Variable      "Numerator"
-        Value         "[ - 8*Rl*Vo*pi^2]"
-        Show          on
-      }
-      Parameter {
-        Variable      "Denominator"
-        Value         "[Co*L*Rl*pi^2*n^2  L*pi^2*n^2  8*Rl]"
-        Show          on
-      }
-      Parameter {
-        Variable      "X0"
-        Value         "Vo"
-        Show          on
-      }
-    }
-    Component {
-      Type          SmallSignalResponse
-      Name          "Response1"
-      Show          on
-      Position      [430, 235]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "ShowReference"
-        Value         "1"
-        Show          off
-      }
-      Parameter {
-        Variable      "InvertReference"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          SmallSignalPerturbation
-      Name          "Perturbation1"
-      Show          on
-      Position      [85, 280]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "ShowInput"
-        Value         "1"
-        Show          off
-      }
-    }
-    Component {
-      Type          Constant
-      Name          "Constant1"
-      Show          on
-      Position      [85, 235]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Frame         [-25, -10; 25, 10]
-      Parameter {
-        Variable      "Value"
-        Value         "Phi"
-        Show          off
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "10"
-        Show          off
-      }
-    }
-    Component {
-      Type          Sum
-      Name          "Sum1"
-      Show          off
-      Position      [165, 235]
-      Direction     up
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "IconShape"
-        Value         "2"
-        Show          off
-      }
-      Parameter {
-        Variable      "Inputs"
-        Value         "|++"
-        Show          off
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "10"
-        Show          off
-      }
-    }
-    Component {
       Type          Scope
       Name          "Scope2"
       Show          on
@@ -2319,166 +2217,7 @@ Plecs {
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"gAAAJYAAAADAAAAlgAAAAEAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAAAIAA"
-"AAlgAAAAkAAACWAAALQAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAADoAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"ApYAAAAAQAAAAAAAAPoAAAAADU="
-      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
-"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-"=="
-      Axes          "3"
-      TimeRange     "0"
-      ScrollingMode "1"
-      SingleTimeAxis "1"
-      Open          "0"
-      Ts            "-1"
-      SampleLimit   "0"
-      XAxisLabel    "Time / s"
-      ShowLegend    "2"
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Axis {
-        Name          ""
-        AutoScale     1
-        MinValue      0
-        MaxValue      1
-        Signals       {}
-        SignalTypes   [ ]
-        Untangle      0
-        KeepBaseline  off
-        BaselineValue 0
-      }
-      Fourier {
-        SingleXAxis       on
-        AxisLabel         "Frequency / Hz"
-        Scaling           0
-        PhaseDisplay      0
-        ShowFourierLegend off
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-        Axis {
-          Name          ""
-          AutoScale     1
-          MinValue      0
-          MaxValue      1
-          Signals       {}
-          Untangle      0
-          KeepBaseline  off
-          BaselineValue 0
-        }
-      }
-    }
-    Component {
-      Type          TransferFunction
-      Name          "Transfer Fcn1"
-      Show          on
-      Position      [960, 685]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Frame         [-50, -15; 50, 15]
-      Parameter {
-        Variable      "Numerator"
-        Value         "[ - 8*Rl*Vo*pi^2]"
-        Show          on
-      }
-      Parameter {
-        Variable      "Denominator"
-        Value         "[Co*L*Rl*pi^2*n^2  L*pi^2*n^2  8*Rl]"
-        Show          on
-      }
-      Parameter {
-        Variable      "X0"
-        Value         "Vo"
-        Show          on
-      }
-    }
-    Component {
-      Type          Step
-      Name          "Step"
-      Show          on
-      Position      [760, 685]
-      Direction     right
-      Flipped       off
-      LabelPosition south
-      Parameter {
-        Variable      "Time"
-        Value         "0.5"
-        Show          on
-      }
-      Parameter {
-        Variable      "Before"
-        Value         "0"
-        Show          on
-      }
-      Parameter {
-        Variable      "After"
-        Value         "0.5"
-        Show          on
-      }
-      Parameter {
-        Variable      "DataType"
-        Value         "10"
-        Show          off
-      }
-    }
-    Component {
-      Type          Scope
-      Name          "Scope3"
-      Show          on
-      Position      [1200, 645]
-      Direction     up
-      Flipped       off
-      LabelPosition south
-      Location      [0, 26; 1920, 1183]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAALoA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAtAAAAA7fw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAC0AAAABxAP///wAAC0AAAAWyAAAA"
-"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
-"AAAAA=="
-      SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"gAAAJYAAAADAAAAlgAAAAEAAACWAAAABgAAAJYAAAAHAAAAlgAAAAQAAACWAAAABQAAAJYAAAAIAA"
+"QAAAJYAAAACAAAAlgAAAAMAAACWAAAABAAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAA"
 "AAlgAAAAkAAACWAAALQAAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAADoAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
@@ -3078,35 +2817,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Transfer Fcn"
-      SrcTerminal   2
-      DstComponent  "Response1"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Constant1"
-      SrcTerminal   1
-      DstComponent  "Sum1"
-      DstTerminal   2
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Perturbation1"
-      SrcTerminal   1
-      Points        [165, 280]
-      DstComponent  "Sum1"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Sum1"
-      SrcTerminal   1
-      DstComponent  "Transfer Fcn"
-      DstTerminal   1
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Vo"
       SrcTerminal   3
       Points        [1220, 445]
@@ -3120,44 +2830,21 @@ Plecs {
         DstTerminal   1
       }
     }
-    Connection {
-      Type          Signal
-      SrcComponent  "Step"
-      SrcTerminal   1
-      Points        [840, 685]
-      Branch {
-        DstComponent  "Transfer Fcn1"
-        DstTerminal   1
-      }
-      Branch {
-        Points        [840, 635]
-        DstComponent  "Scope3"
-        DstTerminal   1
-      }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Transfer Fcn1"
-      SrcTerminal   2
-      Points        [1095, 685; 1095, 645]
-      DstComponent  "Scope3"
-      DstTerminal   2
-    }
   }
   Analysis {
     Type          ImpulseResponseAnalysis
     Name          "Impulse Response Analysis"
     ShowLegend    "1"
-    TimeSpan      "5/f"
+    TimeSpan      "10/f"
     StartTime     "0"
     Tolerance     "1e-4"
     MaxIter       "30"
-    FrequencyRange "[100 10000]"
+    FrequencyRange "[1 1e5]"
     FrequencyScale "2"
     Amplitude     "1e-3"
     NumPoints     "300"
-    Perturbation  "Perturbation1"
-    Response      "Response1"
+    Perturbation  "Perturbation"
+    Response      "Response"
     JacobianPerturbation "1e-4"
     JacobianCalculation "2"
     InitCycles    "0"
