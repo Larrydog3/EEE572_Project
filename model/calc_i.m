@@ -1,5 +1,5 @@
 function [ipk,iRMS] = calc_i(f,Va,Vb,N,phi,L)
-%CALC_I Calculate peak, RMS, and specific current values of interest for 
+%CALC_I Calculate peak and RMS inductor current for 
 % a single-phase-shifted trapezoidal current waveform.
 %   
 % Inputs:
@@ -13,8 +13,6 @@ function [ipk,iRMS] = calc_i(f,Va,Vb,N,phi,L)
 % Outputs:
 %   ipk - Peak current (A)
 %   iRMS - RMS current (A)
-%   i1 - current at time phi
-%   i2 - current at time pi
 
     T = 1./f;
     phi_rad = phi.*pi;

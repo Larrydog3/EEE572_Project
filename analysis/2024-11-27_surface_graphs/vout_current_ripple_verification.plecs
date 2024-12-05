@@ -1,9 +1,9 @@
 Plecs {
-  Name          "dc_bus_voltage_ctrl_9"
+  Name          "vout_current_ripple_verification"
   Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
-  TimeSpan      "0.15"
+  TimeSpan      "0.05"
   Timeout       ""
   Solver        "auto"
   MaxStep       "1e-3"
@@ -28,8 +28,8 @@ Plecs {
   AlgebraicLoopWithStateMachineMsg "3"
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
-  InitializationCommands "f=400e3\nVin=1000\nC_2=0.1e-6\nR_L=10e3\nPhi = 0.0 "
-"\nLlk = 100e-6\nN = 1\n\n\nw_z = 827\nw_p = 4.772e4\nK_c = 34.39"
+  InitializationCommands "f=400e3\nVin=1000\nC_2=0.1e-6\nR_L=1e3\nPhi = 0.0 \n"
+"Llk = 100e-6\nN = 1\n\nK_c = 0.22\nw_p = 2.87e5\nw_z = 2.19e3\n\n"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -70,7 +70,7 @@ Plecs {
     Index         "4"
   }
   Schematic {
-    Location      [-1329, -1297; 591, -159]
+    Location      [0, 23; 1920, 1162]
     ZoomFactor    1.14436
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -1419,6 +1419,7 @@ Plecs {
       Direction     down
       Flipped       on
       LabelPosition west
+      CommentOut    DisabledClosedCircuit
       Parameter {
         Variable      "R"
         Value         "10e-3"
@@ -2163,7 +2164,6 @@ Plecs {
       Direction     down
       Flipped       on
       LabelPosition west
-      CommentOut    DisabledOpenCircuit
       Parameter {
         Variable      "R"
         Value         "R_L"
@@ -2197,20 +2197,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [-91, -1030; 408, -207]
+      Location      [819, 204; 1650, 1119]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAPEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAALtAAABa/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAAu0AAABxAP///wAAAu0AAAM/AAAA"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAATfAAABQfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABN8AAABxAP///wAABN8AAAPyAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"QAAAJYAAAACAAAAlgAAAAMAAACWAAAABAAAAJYAAAAFAAAAlgAAAAYAAACWAAAABwAAAJYAAAAIAA"
-"AAlgAAAAkAAACWAAAC7QAAAAsBAAABAAAAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAADoAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AIFAAAAAQAAAAAAAAPoAAAAADU="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAA"
+"wAAAJYAAAAEAAAAlgAAAAUAAACWAAAABgAAAJYAAAAHAAAAlgAAAAgAAACWAAAACQAAAJYAAATFAA"
+"AACwEAAAEAAAAAAAAAAAAAAACW/////wAAAIEAAAAAAAAACwAAAOgAAAABAAAAAAAAAJYAAAABAAA"
+"AAAAAAJYAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
+"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAArEAAAABAAAAAAAAA+gAA"
+"AAANQ=="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "AAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -2218,7 +2218,7 @@ Plecs {
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -2429,7 +2429,7 @@ Plecs {
       LabelPosition south
       Parameter {
         Variable      "Time"
-        Value         "0.03"
+        Value         "0.01"
         Show          on
       }
       Parameter {
@@ -2598,21 +2598,21 @@ Plecs {
     }
     Component {
       Type          TransferFunction
-      Name          "Type 3 K-Factor"
+      Name          "Type 2 K-Factor"
       Show          on
-      Position      [710, 130]
+      Position      [700, 130]
       Direction     right
       Flipped       off
       LabelPosition south
-      Frame         [-55, -15; 55, 15]
+      Frame         [-65, -15; 65, 15]
       Parameter {
         Variable      "Numerator"
-        Value         "[1 2*w_z w_z^2]"
+        Value         "[1/w_z 1]"
         Show          off
       }
       Parameter {
         Variable      "Denominator"
-        Value         "[1 2*w_p w_p^2]"
+        Value         "[1/w_p 1]"
         Show          off
       }
       Parameter {
@@ -2693,8 +2693,8 @@ Plecs {
       }
       Parameter {
         Variable      "x0"
-        Value         "0"
-        Show          off
+        Value         "0.01"
+        Show          on
       }
       Parameter {
         Variable      "ShowStatePort"
@@ -2805,6 +2805,99 @@ Plecs {
         Variable      "Visibility"
         Value         "1"
         Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "C1"
+      Show          on
+      Position      [555, 715]
+      Direction     left
+      Flipped       on
+      LabelPosition north
+      Parameter {
+        Variable      "C"
+        Value         "100e-6"
+        Show          on
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope3"
+      Show          on
+      Position      [1480, 730]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [-1048, -603; -621, -302]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAEwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAJcA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAACXAP///wAAAAMAAAKAAAAAmfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAAoAAAABxAP///wAAAoAAAAEBAAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AIAAAAGAAAAA"
+"wAAAJYAAAAEAAAAlgAAAAUAAACWAAAABgAAAJYAAAAHAAAAlgAAAAkAAACWAAADUQAAAAsBAAABAA"
+"AAAAAAAAAAAAAAlv////8AAACBAAAAAAAAAAsAAADlAAAAAQAAAAAAAACWAAAAAQAAAAAAAACWAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAACWAAAAAQAAAAAAAAAAAAAAAQAAAAAAAACqAAAAAQAAAAAAAAPoAAAAADU="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      Axes          "1"
+      TimeRange     "0.0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "1"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "1"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Component {
+      Type          PlecsProbe
+      Name          "I_C2"
+      Show          on
+      Position      [1415, 730]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Probe {
+        Component     "Co"
+        Path          ""
+        Signals       {"Capacitor current"}
       }
     }
     Connection {
@@ -2961,15 +3054,22 @@ Plecs {
         DstTerminal   1
       }
       Branch {
-        Points        [395, 715]
-        Branch {
-          DstComponent  "FETD1"
-          DstTerminal   1
-        }
-        Branch {
-          DstComponent  "FETD"
-          DstTerminal   2
-        }
+        DstComponent  "C1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "FETD1"
+      SrcTerminal   1
+      Points        [395, 715]
+      Branch {
+        DstComponent  "C1"
+        DstTerminal   2
+      }
+      Branch {
+        DstComponent  "FETD"
+        DstTerminal   2
       }
     }
     Connection {
@@ -3403,7 +3503,7 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Type 3 K-Factor"
+      SrcComponent  "Type 2 K-Factor"
       SrcTerminal   2
       DstComponent  "Integrator"
       DstTerminal   1
@@ -3412,7 +3512,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Gain1"
       SrcTerminal   2
-      DstComponent  "Type 3 K-Factor"
+      DstComponent  "Type 2 K-Factor"
       DstTerminal   1
     }
     Connection {
@@ -3475,6 +3575,13 @@ Plecs {
       Points        [1460, 650; 1460, 635]
       DstComponent  "Mux3"
       DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "I_C2"
+      SrcTerminal   1
+      DstComponent  "Scope3"
+      DstTerminal   1
     }
   }
   Analysis {
