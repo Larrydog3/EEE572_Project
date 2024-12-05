@@ -38,5 +38,5 @@ semilogx(results.F, Magnitude_exp, "Color", "magenta", LineStyle="--", LineWidth
 axes(phase_axis); 
 semilogx(results.F, Phase_exp, "Color", "magenta", LineStyle="--", LineWidth=2);
 
-legend("GAM","Derived GAM", "Reduced Order Model", "PLECS Impulse Response Analysis");
+legend("Shao GAM [17]","Derived GAM", "Reduced Order Model", "PLECS Impulse Response Analysis");
 title("$G_{v_o\phi}(s)=\frac{v_o(s)}{\phi(s)}$", "Interpreter", 'latex');

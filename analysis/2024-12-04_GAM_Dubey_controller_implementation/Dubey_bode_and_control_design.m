@@ -18,12 +18,12 @@ G_phi_to_vo_GAM_Dubey = GAM_G_phi_to_vo_tf_Dubey(dp)
 
 w_c = 1e3 * 2*pi;
 [~,phaseP] = bode(G_phi_to_vo_GAM_Dubey, w_c)
-phi_boost = 60-90-(phaseP);
+phi_boost = 60-90-(phaseP)
 
-k = tand(phi_boost/2+45);
+k = tand(phi_boost/2+45)
 
-w_z = w_c/k;
-w_p = k*w_c;
+w_z = w_c/k
+w_p = k*w_c
 s = tf('s');
 Gc_unityGain = 1/s*(1+s/w_z)/(1+s/w_p);
 
@@ -32,7 +32,7 @@ Kc = 1/magGcu;
 
 Gc = Kc*Gc_unityGain;
 
-Gcl = G_phi_to_vo_GAM_Dubey*Gc/(1+G_phi_to_vo_GAM_Dubey*Gc);
+Gcl = G_phi_to_vo_GAM_Dubey*Gc/(1+G_phi_to_vo_GAM_Dubey*Gc)
 
 dp.w_z = w_z
 dp.w_p = w_p
@@ -55,3 +55,6 @@ axes(mag_axis);
 semilogx(results.F, Magnitude_exp, "Color", "magenta", LineStyle="--", LineWidth=2);
 axes(phase_axis); 
 semilogx(results.F, Phase_exp, "Color", "magenta", LineStyle="--", LineWidth=2);
+
+legend("Analytical","PLECS");
+title("Analytical Closed Loop Controller vs PLECS Closed Loop Controller");
